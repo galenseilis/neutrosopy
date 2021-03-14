@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.special import comb
-import sympy
 import time
 import math
 
@@ -122,7 +121,7 @@ class NeutrosophicNumber(object):
             other_terms = np.sum([NeutrosophicNumber(0, comb(rhs, i, exact=True) * self.a ** (rhs-i) * self.b ** i) for i in range(1, rhs+1)])
             return  first_term + other_terms
         else:
-            raise ValueError('Exponent type not supported.')
+            return nexp(rhs * nln(self))
 
     def __abs__(self):
         '''
@@ -189,3 +188,10 @@ def nsin(x, order=10):
     Neutrosophic sine function approximated by its Maclaurin series.
     '''
     return np.sum([(-1)**k * (x ** (2*k+1)) / math.factorial(2*k+1) for k in range(order)])
+
+def nln(x, order=10):
+    '''
+    Neutrosophic ln function approximated by a series based on the area
+    hyperbolic tangent function.
+    '''
+    return 2 * np.sum([((x-1)/(x+1))**(2*k+1) / (2*k+1) for k in range(order)])
