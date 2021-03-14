@@ -104,7 +104,22 @@ class NeutrosophicNumber(object):
             return NeutrosophicNumber(self.a / rhs, self.b / rhs)
 
     def __pow__(self, rhs):
-        return nexp(rhs * nln(self))
+        if rhs == 0:
+            return NeutrosophicNumber(1, 0)
+        elif rhs == 1:
+            return NeutrosophicNumber(self.a, self.b)
+        elif rhs == 0.5:
+            solutions = (NeutrosophicNumber(self.a**0.5, -(self.a**0.5) + (self.a + self.b)**0.5),
+                         NeutrosophicNumber(self.a**0.5, -(self.a**0.5 + (self.a + self.b)**0.5)),
+                         NeutrosophicNumber(-(self.a**0.5), self.a**0.5 + (self.a + self.b)**0.5),
+                         NeutrosophicNumber(-(self.a**0.5), self.a**0.5 - (self.a + self.b)**0.5))
+            return solutions
+        elif int(rhs) == rhs:
+            first_term = NeutrosophicNumber(self.a ** rhs, 0)
+            other_terms = np.sum([NeutrosophicNumber(0, comb(rhs, i, exact=True) * self.a ** (rhs-i) * self.b ** i) for i in range(1, rhs+1)])
+            return  first_term + other_terms
+        else:
+            return nexp(rhs * nln(self))
 
     def __abs__(self):
         '''
