@@ -188,6 +188,7 @@ def nsin(x, order=10):
     '''
     return np.sum([(-1)**k * (x ** (2*k+1)) / math.factorial(2*k+1) for k in range(order)])
 
+# TODO: Docstrings
 def nln(x, order=10):
     '''
     Neutrosophic ln function approximated by a series based on the area
