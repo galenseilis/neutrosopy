@@ -3,7 +3,6 @@ from scipy.special import comb
 import time
 import math
 
-# TODO: Support nth roots
 # TODO: Docstrings
 class NeutrosophicNumber(object):
     '''
