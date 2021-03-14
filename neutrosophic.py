@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.special import comb
-import time
 import math
 
 # TODO: Docstrings
