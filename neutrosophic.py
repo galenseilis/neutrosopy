@@ -147,7 +147,9 @@ class NeutrosophicNumber(object):
         return not self.__eq__(rhs)
 
     def __str__(self):
-        if self.b >= 0:
+        if isinstance(self.b, complex):
+            return f'{self.a}+{self.b}I'
+        elif self.b >= 0:
             return f'{self.a}+{self.b}I'
         else:
             return f'{self.a}{self.b}I'
