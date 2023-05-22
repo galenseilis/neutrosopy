@@ -323,7 +323,7 @@ def neutrolize_vector(X, deter=True):
     return Z
 
 
-def nexp(x, order=10):
+def nexp(x):
     """
     Compute the neutrosophic exponential function approximation using its Maclaurin series.
 
@@ -331,10 +331,6 @@ def nexp(x, order=10):
     -----------
     x : numeric
         The value at which to evaluate the neutrosophic exponential function.
-
-    order : int, optional
-        The order of the Maclaurin series used for the approximation.
-        Default is 10.
 
     Returns:
     --------
@@ -344,7 +340,6 @@ def nexp(x, order=10):
     Notes:
     ------
     - The neutrosophic exponential function is approximated using its Maclaurin series.
-    - The Maclaurin series is truncated at the specified 'order'.
     - The function computes the sum of the terms in the Maclaurin series approximation.
     - The resulting sum is returned as a neutrosophic number.
     - The neutrosophic number is represented using the NeutrosophicNumber class.
@@ -354,13 +349,21 @@ def nexp(x, order=10):
     >>> nexp(1)
     2+1I
 
-    >>> nexp(2, order=5)
+    >>> nexp(2)
     7+4.333333333333333I
     """
-    return np.sum([(x**k) / math.factorial(k) for k in range(order)])
+    result = NeutrosophicNumber(0.0, 0.0)
+    k = 0
+    while True:
+        new_result = result + (x**k) / math.factorial(k)
+        if new_result == result:
+            return result
+        else:
+            result = new_result
+            k += 1
 
 
-def nsin(x, order=10):
+def nsin(x):
     """
     Compute the neutrosophic sine function approximation using its Maclaurin series.
 
@@ -368,10 +371,6 @@ def nsin(x, order=10):
     -----------
     x : numeric
         The value at which to evaluate the neutrosophic sine function.
-
-    order : int, optional
-        The order of the Maclaurin series used for the approximation.
-        Default is 10.
 
     Returns:
     --------
@@ -381,7 +380,6 @@ def nsin(x, order=10):
     Notes:
     ------
     - The neutrosophic sine function is approximated using its Maclaurin series.
-    - The Maclaurin series is truncated at the specified 'order'.
     - The function computes the sum of the terms in the Maclaurin series approximation.
     - The resulting sum is returned as a neutrosophic number.
     - The neutrosophic number is represented using the NeutrosophicNumber class.
@@ -394,18 +392,21 @@ def nsin(x, order=10):
     >>> nsin(1)
     1.1666666666666665+1.1752011936438014I
 
-    >>> nsin(2, order=5)
+    >>> nsin(2)
     -0.9333333333333332+3.9933992677987827I
     """
-    return np.sum(
-        [
-            (-1) ** k * (x ** (2 * k + 1)) / math.factorial(2 * k + 1)
-            for k in range(order)
-        ]
-    )
+    result = NeutrosophicNumber(0.0, 0.0)
+    k = 0
+    while True:
+        new_result = result + (-1) ** k * (x ** (2 * k + 1)) / math.factorial(2 * k + 1)
+        if new_result == result:
+            return result
+        else:
+            result = new_result
+            k += 1
 
 
-def nln(x, order=10):
+def nln(x):
     """
     Compute the neutrosophic natural logarithm function approximation using
     a series based on the area hyperbolic tangent function.
@@ -414,10 +415,6 @@ def nln(x, order=10):
     -----------
     x : numeric
         The value at which to evaluate the neutrosophic natural logarithm function.
-
-    order : int, optional
-        The order of the series used for the approximation.
-        Default is 10.
 
     Returns:
     --------
@@ -440,9 +437,15 @@ def nln(x, order=10):
     >>> nln(2)
     1.0986122886681098+1.5707963267948966I
 
-    >>> nln(3, order=5)
+    >>> nln(3)
     1.1752011936438014+1.5040773967762742I
     """
-    return 2 * np.sum(
-        [((x - 1) / (x + 1)) ** (2 * k + 1) / (2 * k + 1) for k in range(order)]
-    )
+    result = NeutrosophicNumber(0.0, 0.0)
+    k = 0
+    while True:
+        new_result = result + ((x - 1) / (x + 1)) ** (2 * k + 1) / (2 * k + 1)
+        if new_result == result:
+            return result
+        else:
+            result = new_result
+            k += 1
