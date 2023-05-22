@@ -7,3 +7,4 @@ src/neutrosopy.egg-info/PKG-INFO
 src/neutrosopy.egg-info/SOURCES.txt
 src/neutrosopy.egg-info/dependency_links.txt
 src/neutrosopy.egg-info/top_level.txt
+tests/test_neutrosophic_number.py
