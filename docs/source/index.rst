@@ -1,8 +1,8 @@
-===================
-Neutrosophic Module
-===================
+==============
+Neutrosopy Module
+==============
 
-.. automodule:: neutrosophic
+.. automodule:: neutrosopy
    :members:
    :undoc-members:
    :show-inheritance:
@@ -10,15 +10,39 @@ Neutrosophic Module
 Introduction
 ------------
 
-The ``neutrosophic`` module provides functionality for working with neutrosophic numbers. Neutrosophic numbers are special numbers that have both a deterministic and an indeterministic part.
+The ``neutrosopy`` module provides functionality for working with neutrosophic numbers. Neutrosophic numbers are special numbers that have both a deterministic and an indeterministic part.
+
+The module includes the following classes and functions:
+
+Classes
+~~~~~~~
+
+NeutrosophicNumber
+   Represents a neutrosophic number with a deterministic part (``a``) and an indeterministic part (``b``). Supports various mathematical operations such as addition, subtraction, multiplication, division, exponentiation, and more.
+
+Functions
+~~~~~~~~~
+
+neutrolize_vector(X, deter=True)
+   Constructs a neutrosophic vector from a 1-dimensional array, with the option to specify whether to assign the values to the deterministic or indeterministic part.
+
+nexp(x, order=10)
+   Approximates the neutrosophic exponential function using its Maclaurin series.
+
+nsin(x, order=10)
+   Approximates the neutrosophic sine function using its Maclaurin series.
+
+nln(x, order=10)
+   Approximates the neutrosophic natural logarithm function using a series based on the area hyperbolic tangent function.
 
 Usage
 -----
-To use the module, simply import it as follows:
+
+To use the module, import it as follows:
 
 .. code-block:: python
 
-   import neutrosophic
+   import neutrosopy
 
 Examples
 --------
@@ -29,14 +53,14 @@ Construct a neutrosophic number:
 
 .. code-block:: python
 
-   n = neutrosophic.NeutrosophicNumber(2, 1)
+   n = neutrosopy.NeutrosophicNumber(2, 1)
 
 Perform arithmetic operations on neutrosophic numbers:
 
 .. code-block:: python
 
-   a = neutrosophic.NeutrosophicNumber(3, 2)
-   b = neutrosophic.NeutrosophicNumber(1, 4)
+   a = neutrosopy.NeutrosophicNumber(3, 2)
+   b = neutrosopy.NeutrosophicNumber(1, 4)
    c = a + b
    d = a * b
 
@@ -47,31 +71,31 @@ Construct a neutrosophic vector:
    import numpy as np
 
    x = np.array([1, 2, 3, 4, 5])
-   neutrosophic_vector = neutrosophic.neutrolize_vector(x)
+   neutrosophic_vector = neutrosopy.neutrolize_vector(x)
 
 Approximate the neutrosophic exponential function:
 
 .. code-block:: python
 
-   result = neutrosophic.nexp(2)
+   result = neutrosopy.nexp(2)
 
 Approximate the neutrosophic sine function:
 
 .. code-block:: python
 
-   result = neutrosophic.nsin(1.5)
+   result = neutrosopy.nsin(1.5)
 
 Approximate the neutrosophic natural logarithm function:
 
 .. code-block:: python
 
-   result = neutrosophic.nln(2.5)
+   result = neutrosopy.nln(2.5)
 
+``neutrosopy`` Module API Reference
+----------------------------------
 
+.. automodule:: neutrosopy
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
