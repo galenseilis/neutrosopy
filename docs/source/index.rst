@@ -1,6 +1,6 @@
-==============
+=================
 Neutrosopy Module
-==============
+=================
 
 .. automodule:: neutrosopy
    :members:
@@ -88,14 +88,4 @@ Approximate the neutrosophic sine function:
 Approximate the neutrosophic natural logarithm function:
 
 .. code-block:: python
-
-   result = neutrosopy.nln(2.5)
-
-``neutrosopy`` Module API Reference
-----------------------------------
-
-.. automodule:: neutrosopy
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
